@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <data>
+
+    <variable
+        name="item"
+        type="com.tiredbones.rates.feature.rates.list.RateItem"
+        />
+
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/root"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <ImageView
+        android:id="@+id/image_flag"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        app:image="@{item.imageRes}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:srcCompat="@drawable/ic_usd"
+        />
+
+    <TextView
+        android:id="@+id/rate_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:text="@{item.id.code}"
+        app:layout_constraintBottom_toTopOf="@id/rate_name"
+        app:layout_constraintEnd_toStartOf="@id/rate_value"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/image_flag"
+        app:layout_constraintTop_toTopOf="@id/image_flag"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="USD"
+        />
+
+    <TextView
+        android:id="@+id/rate_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:text="@{item.name}"
+        app:layout_constraintBottom_toBottomOf="@id/image_flag"
+        app:layout_constraintEnd_toStartOf="@id/rate_value"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/image_flag"
+        app:layout_constraintTop_toBottomOf="@id/rate_code"
+        tools:text="US Dollar"
+        />
+
+    <EditText
+        android:id="@+id/rate_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:maxLength="12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rate_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:text="@{item.amount}"
+        tools:ignore="LabelFor"
+        tools:text="1000"
+        />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,2 @@
+include ':app', ':domain', ':logger', ':client-api', ':repository'
+rootProject.name='Rates'

@@ -1,0 +1,27 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+sourceCompatibility = Versions.androidSourceCompatibility
+targetCompatibility = Versions.androidTargetCompatibility
+
+compileKotlin {
+  kotlinOptions {
+    jvmTarget = Versions.androidTargetCompatibility
+  }
+}
+
+compileTestKotlin {
+  kotlinOptions {
+    jvmTarget = Versions.androidTargetCompatibility
+  }
+}
+
+dependencies {
+  implementation project(':logger')
+  implementation project(':domain')
+  api project(':client-api')
+
+  implementation Libs.rxJava2
+  implementation Libs.dagger
+  implementation Libs.kotlin
+}

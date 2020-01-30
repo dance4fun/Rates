@@ -1,0 +1,21 @@
+<resources>
+
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="BaseProgressBar" parent="Widget.AppCompat.ProgressBar">
+    <item name="android:indeterminateTint">@color/progress_bar_indeterminate_tint_color</item>
+    <item name="android:layout_width">@dimen/progress_bar_size</item>
+    <item name="android:layout_height">@dimen/progress_bar_size</item>
+    <item name="android:layout_gravity">center</item>
+  </style>
+
+  <style name="DialogTransparent" parent="android:Theme.Dialog">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+  </style>
+
+</resources>

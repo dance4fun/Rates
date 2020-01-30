@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion Versions.compileSdk
+
+  compileOptions {
+    sourceCompatibility Versions.androidSourceCompatibility
+    targetCompatibility Versions.androidTargetCompatibility
+  }
+
+  defaultConfig {
+    applicationId "com.tiredbones.rates"
+    minSdkVersion Versions.minSdk
+    targetSdkVersion Versions.targetSdk
+    versionCode appVersionCode
+    versionName appVersionName
+
+    buildConfigField "String", "BASE_URL", "\"https://revolut.duckdns.org/\""
+  }
+
+  buildTypes {
+    debug {
+      minifyEnabled false
+    }
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  dataBinding {
+    enabled = true
+  }
+}
+
+dependencies {
+  implementation project(':domain')
+  implementation project(':logger')
+  implementation project(':client-api')
+  implementation project(':repository')
+
+  kapt Libs.daggerCompiler
+
+  implementation Libs.kotlin
+  implementation Libs.appCompat
+  implementation Libs.supportConstraint
+  implementation Libs.recyclerView
+  implementation Libs.archComponentsExtensions
+  implementation Libs.glide
+  implementation Libs.dagger
+  implementation Libs.rxJava2
+  implementation Libs.rxAndroid2
+  implementation Libs.retrofit
+  implementation Libs.retrofitGsonConverter
+  implementation Libs.retrofitRx2
+  implementation Libs.okHttpLogging
+  implementation Libs.okHttp
+  implementation Libs.stetho
+
+  testImplementation Libs.mockito
+  testImplementation Libs.junit
+  testImplementation Libs.hamcrest
+  testImplementation Libs.hamcrestLib
+  testImplementation Libs.kotlinTest
+  testImplementation Libs.kotlinTestJUnit
+  testImplementation Libs.archComponentsTesting
+  testImplementation(Libs.mockitoKotlin) {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-reflect'
+  }
+}
